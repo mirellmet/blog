@@ -20,10 +20,7 @@
                     <p>{{ $post->snippet }}</p>
 
                     <div class="card-actions justify-end">
-                        <a href="{{ url('/post/' . $post->id) }}"
-                           class="btn btn-primary">
-                            Read more
-                        </a>
+                        <a href="{{ route('post', $post) }}" class="btn btn-primary">Read more</a>
                     </div>
                 </div>
             </div>
