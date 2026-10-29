@@ -7,6 +7,7 @@ use App\Http\Requests\StoreCommentRequest;
 use App\Http\Requests\UpdateCommentRequest;
 use App\Models\Post;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 
 class CommentController extends Controller
 {
@@ -31,6 +32,7 @@ class CommentController extends Controller
      */
      public function store(StoreCommentRequest $request, Post $post)
     {
+        Gate::authorize('create', Comment::class);
         $comment = new Comment($request->validated());
 
         $comment->user()->associate(auth()->user());
