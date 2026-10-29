@@ -18,6 +18,20 @@
                         <td>{{ $post->body }}</td>
                     </tr>
                     <tr>
+    <th>Images</th>
+    <td>
+        <div class="flex flex-wrap gap-3">
+            @foreach ($post->images as $image)
+                <img
+                    src="{{ $image->path }}"
+                    alt="Post image"
+                    class="w-48 rounded-lg"
+                >
+            @endforeach
+        </div>
+    </td>
+</tr>
+                    <tr>
                         <th>Created</th>
                         <td>{{ $post->created_at }}</td>
                     </tr>
