@@ -1,16 +1,40 @@
 <?php
-
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+
+use App\Models\Post;
+use App\Models\User;
 
 class PublicController extends Controller
 {
-    public function index() {
-        return view('welcome');
+    public function index()
+    {
+        $posts = Post::with(['images', 'user', 'tags'])
+            ->withCount('comments')
+            ->latest()
+            ->simplePaginate(16);
+
+        return view('welcome', compact('posts'));
     }
 
-    public function buttons() {
+    public function buttons()
+    {
         return view('buttons');
+    }
+
+    public function user(User $user)
+    {
+        $posts = $user->posts()
+            ->with(['images', 'user', 'tags'])
+            ->withCount('comments')
+            ->latest()
+            ->simplePaginate(16);
+
+        return view('welcome', compact('posts'));
+    }
+
+    public function post(Post $post)
+    {
+        return view('post', compact('post'));
     }
 }
