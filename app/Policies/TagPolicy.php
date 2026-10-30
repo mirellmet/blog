@@ -24,11 +24,11 @@ class TagPolicy
 
     public function update(User $user, Tag $tag): bool
     {
-        return false;
+        return true;
     }
 
     public function delete(User $user, Tag $tag): bool
     {
-        return false;
+        return true;
     }
 }
