@@ -24,6 +24,10 @@
     <div class="navbar-center hidden lg:flex">
         <ul class="menu menu-horizontal px-1">
             <li><a href="/buttons">Buttons</a></li>
+            @auth
+    <li><a href="{{ route('posts.index') }}">Posts</a></li>
+    <li><a href="{{ route('tags.index') }}">Tags</a></li>
+@endauth
             <li>
                 <details>
                     <summary>Parent</summary>
